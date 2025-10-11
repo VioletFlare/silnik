@@ -3,11 +3,18 @@
     "configurations": [{
        "type": "lldb",
        "request": "launch",
-       "name": "Launch Test",
+       "name": "Launch Test (LLDB)",
        "preLaunchTask": "npm: dev",
        "program": "node",
        "args": [
           "${workspaceFolder}/tests/test.js"
-       ]
+       ],
+    }, 
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Test (Node)",
+      "preLaunchTask": "npm: dev",
+      "program": "${workspaceFolder}/tests/test.js"
     }]
   }

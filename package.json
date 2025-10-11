@@ -2,12 +2,15 @@
   "name": "silnik",
   "version": "0.0.1",
   "description": "To debug the code in vscodium or vscode, install",
-  "main": "src/natexec.js",
+  "main": "src/index.js",
   "scripts": {
-    "create-node": "ln -s `which node` node",
+    "create-node": "node ./scripts/create-node.js",
     "dev": "node-gyp build --debug && npm run create-node",
-    "build": "npm i & npm run create-node",
+    "build": "npm i",
     "test": "node ./tests/test.js"
+  },
+  "engines": {
+    "node": ">=22.20.0"
   },
   "author": "",
   "license": "ISC",
