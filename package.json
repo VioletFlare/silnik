@@ -4,8 +4,9 @@
   "description": "To debug the code in vscodium or vscode, install",
   "main": "src/natexec.js",
   "scripts": {
-    "dev": "node-gyp build --debug",
-    "build": "npm i",
+    "create-node": "ln -s `which node` node",
+    "dev": "node-gyp build --debug && npm run create-node",
+    "build": "npm i & npm run create-node",
     "test": "node ./tests/test.js"
   },
   "author": "",

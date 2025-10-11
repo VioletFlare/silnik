@@ -1,11 +1,11 @@
 {
     "version": "0.2.0",
     "configurations": [{
-       "type": "lldb-dap",
+       "type": "lldb",
        "request": "launch",
        "name": "Launch Test",
        "preLaunchTask": "npm: dev",
-       "program": "${which node}",
+       "program": "node",
        "args": [
           "${workspaceFolder}/tests/test.js"
        ]
