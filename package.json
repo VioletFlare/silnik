@@ -1,17 +1,22 @@
 {
   "name": "silnik",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "private": true,
+  "version": "0.0.1",
+  "description": "To debug the code in vscodium or vscode, install",
+  "main": "src/natexec.js",
   "scripts": {
-    "test": "node ./src/main.js"
+    "dev": "node-gyp build --debug",
+    "build": "npm i",
+    "test": "node ./tests/test.js"
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VioletFlare/silnik.git"
+  },
+  "gypfile": true,
   "dependencies": {
     "bindings": "^1.5.0",
     "node-addon-api": "^8.5.0"
-  },
-  "gypfile": true
+  }
 }
