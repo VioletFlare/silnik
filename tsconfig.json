@@ -1,0 +1,24 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es2015",
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "declarationDir": "./types"
+  },  
+  "include": [
+    "src/**/*.ts",
+    "src/types/globals.d.ts",
+  ],
+  "exclude": [
+    "**/__tests__/*",
+    "**/__mocks__/*"
+  ]
+}
