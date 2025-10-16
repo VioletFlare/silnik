@@ -1,5 +1,4 @@
 import typescript from '@rollup/plugin-typescript';
-import sourcemaps from 'rollup-plugin-sourcemaps';
 import dts from "rollup-plugin-dts";
 import del from "rollup-plugin-delete";
 
@@ -9,16 +8,17 @@ export default [
         output: [
             {
                 file: 'index.cjs',
-                format: 'cjs'
+                format: 'cjs',
+                sourcemap: 'inline'
             },
             {
                 file: 'index.mjs',
-                format: 'esm'
+                format: 'esm',
+                sourcemap: 'inline'
             }
         ],
         plugins: [
-            typescript({ sourceMap: true, inlineSources: true }),
-            sourcemaps()
+            typescript(),
         ]
     },
     {
