@@ -15,7 +15,7 @@ class Emitter {
             this.isInitialized = true;
         }
 
-        void emit(Napi::String funcName, Napi::String payload) {
+        void emit(Napi::String eventName, Napi::String payload) {
             if (this.isInitialized) {
 
             } else {
@@ -23,9 +23,11 @@ class Emitter {
             }
         }
 
-        void listen() {
+        void listen(Napi::String eventName) {
             if (this.isInitialized) {
-
+                emit.Call({
+                    { Napi::String::New(this.env, eventName), Napi::String::New(this.env, "data ...") }
+                });
             } else {
                 throw Napi::Error:New(this.env, "Cannot listen because the emitter is uninitialized.")
             }
