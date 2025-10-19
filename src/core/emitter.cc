@@ -1,16 +1,20 @@
 #include <napi.h>
 #include "emitter.h"
 
+template <typename T>
 class Emitter {
     private:
         Napi::Env env;
         Napi::Function nativeEmitter;
+        T* source;
         bool isInitialized = false;
 
     public:
-        void init(const Napi::CallbackInfo& info, Napi::Object exports) {
+        template <typename T>
+        Emitter(const Napi::CallbackInfo& info, Napi::Object exports) {
             this.env = info.Env();
             this.nativeEmitter = info[0].As<Napi::Function>();
+            this.source = new T();
 
             exports.Set(
                 Napi::String::New(this.env, "emit"), Napi::Function::New(this.env, emit)
@@ -25,7 +29,7 @@ class Emitter {
 
         void emit(Napi::String eventName, Napi::String payload) {
             if (this.isInitialized) {
-
+                this.source.catchEvent(eventName, payload);
             } else {
                 throw Napi::Error:New(this.env, "Cannot emit because the emitter is uninitialized.")
             }

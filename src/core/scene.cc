@@ -1,6 +1,7 @@
 #include "scene.h";
 
-template <typename T>
 class Scene {
-    
+    void createCube() {
+        std::cout << "Cube Created" << std::endl;
+    }
 }
