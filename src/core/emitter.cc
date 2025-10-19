@@ -7,11 +7,19 @@ class Emitter {
         Napi::Function nativeEmitter;
         bool isInitialized = false;
 
-
     public:
-        void init(const Napi::CallbackInfo& info) {
+        void init(const Napi::CallbackInfo& info, Napi::Object exports) {
             this.env = info.Env();
             this.nativeEmitter = info[0].As<Napi::Function>();
+
+            exports.Set(
+                Napi::String::New(this.env, "emit"), Napi::Function::New(this.env, emit)
+            );
+
+            exports.Set(
+                Napi::String::New(this.env, "listen"), Napi::Function::New(this.env, listen)
+            );
+
             this.isInitialized = true;
         }
 
