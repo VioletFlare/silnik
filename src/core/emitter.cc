@@ -28,10 +28,6 @@ class Emitter {
             this.isInitialized = true;
         }
 
-        void createCube() {
-            
-        }
-
         void emit(Napi::String eventName, Napi::String payload) {
             if (this.isInitialized) {
                 this.source.catchEvent(eventName, payload);

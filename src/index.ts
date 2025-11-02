@@ -1,5 +1,5 @@
 import $import from 'bindings';
 
-const addon = $import('main');
+const core = $import('main');
 
-console.log(addon.hello()); // 'world'
+core.createCube();

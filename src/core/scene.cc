@@ -1,7 +1,8 @@
 #include "scene.h";
 
 class Scene {
-    void createCube() {
-        std::cout << "Cube Created" << std::endl;
-    }
+    public:
+        void createCube() {
+            std::cout << "Cube Created" << std::endl;
+        }
 }

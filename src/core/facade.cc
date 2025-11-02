@@ -4,18 +4,22 @@ class Facade {
     private:
         Napi::Env env;
         Scene scene;
-        bool isInitialized = false;
         
     public:
-        Facade(const Napi::CallbackInfo& info, Napi::Object exports) {
+        Facade(Napi::Env env) {
             this.env = info.Env();
-        }
-
-        void init() {
             this.scene = new Scene();
         }
 
         void createCube() {
-
+            this.scene.createCube();
         }
+
+        Napi::Object createExports(Napi::Object exports) {
+            exports.Set(
+              Napi::String::New(env, "createCube"),
+              Napi::Function::New(env, createCube)
+            );
+        }
+
 }

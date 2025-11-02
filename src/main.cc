@@ -1,15 +1,11 @@
 #include <napi.h>
-
-Napi::String Method(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  return Napi::String::New(env, "world");
-}
+#include "core/facade.h"
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-  exports.Set(Napi::String::New(env, "hello"),
-              Napi::Function::New(env, Method));
+  Facade *f = new Facade(env);
+  Napi::Object ex = f->createExports(exports);
 
-  return exports;
+  return ex;
 }
 
-NODE_API_MODULE(hello, Init)
+NODE_API_MODULE(addon, Init)
