@@ -1,25 +1,20 @@
-#include "scene.h"
+#include <napi.h>
+#include "facade.h"
 
-class Facade {
-    private:
-        Napi::Env env;
-        Scene scene;
-        
-    public:
-        Facade(Napi::Env env) {
-            this.env = info.Env();
-            this.scene = new Scene();
-        }
+Facade::Facade(Napi::Env &env): env{ env } {
+    this->env = env;
+    this->scene = new Scene();
+}
 
-        void createCube() {
-            this.scene.createCube();
-        }
+void Facade::createCube() {
+    this->scene->createCube();
+}
 
-        Napi::Object createExports(Napi::Object exports) {
-            exports.Set(
-              Napi::String::New(env, "createCube"),
-              Napi::Function::New(env, createCube)
-            );
-        }
+Napi::Object Facade::createExports(Napi::Object exports) {
+    exports.Set(
+        Napi::String::New(env, "createCube"),
+        Napi::Function::New(env, Facade::createCube)
+    );
 
+    return exports;
 }

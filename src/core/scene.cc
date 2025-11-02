@@ -1,5 +1,3 @@
-#include "scene.h";
-
 class Scene {
     public:
         void createCube() {
