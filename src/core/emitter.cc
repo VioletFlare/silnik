@@ -1,5 +1,6 @@
 #include <napi.h>
 #include "emitter.h"
+#include "scene.h"
 
 template <typename T>
 class Emitter {
@@ -25,6 +26,10 @@ class Emitter {
             );
 
             this.isInitialized = true;
+        }
+
+        void createCube() {
+            
         }
 
         void emit(Napi::String eventName, Napi::String payload) {
